@@ -1,0 +1,27 @@
+[
+   {
+      "directory" : "/Users/charlie/workspace_ccstheia/i2c_ex1_loopback/CPU1_RAM",
+      "command"   : "clang++ -I\"/Users/charlie/workspace_ccstheia/i2c_ex1_loopback\" -I\"/Users/charlie/ti/C2000Ware_5_04_00_00\" -I\"/Applications/ti/ccs2002/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/include\" -DDEBUG -DRAM -Dgeneric_ram_lnk -I\"/Users/charlie/workspace_ccstheia/i2c_ex1_loopback/CPU1_RAM/syscfg\" -DF28003x=1 -I\"/Users/charlie/ti/C2000Ware_5_04_00_00/device_support/f28003x/common/include/\" -I\"/Users/charlie/ti/C2000Ware_5_04_00_00/driverlib/f28003x/driverlib/\" -DCPU1 -DCMDTOOL",
+      "file"      : "/Users/charlie/workspace_ccstheia/i2c_ex1_loopback/i2c_ex1_loopback.c"
+   },
+   {
+      "directory" : "/Users/charlie/workspace_ccstheia/i2c_ex1_loopback/CPU1_RAM",
+      "command"   : "clang++ -I\"/Users/charlie/workspace_ccstheia/i2c_ex1_loopback\" -I\"/Users/charlie/ti/C2000Ware_5_04_00_00\" -I\"/Applications/ti/ccs2002/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/include\" -DDEBUG -DRAM -Dgeneric_ram_lnk -I\"/Users/charlie/workspace_ccstheia/i2c_ex1_loopback/CPU1_RAM/syscfg\" -DF28003x=1 -I\"/Users/charlie/ti/C2000Ware_5_04_00_00/device_support/f28003x/common/include/\" -I\"/Users/charlie/ti/C2000Ware_5_04_00_00/driverlib/f28003x/driverlib/\" -DCPU1 -DCMDTOOL",
+      "file"      : "/Users/charlie/workspace_ccstheia/i2c_ex1_loopback/CPU1_RAM/syscfg/board.c"
+   },
+   {
+      "directory" : "/Users/charlie/workspace_ccstheia/i2c_ex1_loopback/CPU1_RAM",
+      "command"   : "clang++ -I\"/Users/charlie/workspace_ccstheia/i2c_ex1_loopback\" -I\"/Users/charlie/ti/C2000Ware_5_04_00_00\" -I\"/Applications/ti/ccs2002/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/include\" -DDEBUG -DRAM -Dgeneric_ram_lnk -I\"/Users/charlie/workspace_ccstheia/i2c_ex1_loopback/CPU1_RAM/syscfg\" -DF28003x=1 -I\"/Users/charlie/ti/C2000Ware_5_04_00_00/device_support/f28003x/common/include/\" -I\"/Users/charlie/ti/C2000Ware_5_04_00_00/driverlib/f28003x/driverlib/\" -DCPU1 -DCMDTOOL",
+      "file"      : "/Users/charlie/workspace_ccstheia/i2c_ex1_loopback/CPU1_RAM/syscfg/c2000ware_libraries.c"
+   },
+   {
+      "directory" : "/Users/charlie/workspace_ccstheia/i2c_ex1_loopback/CPU1_RAM",
+      "command"   : "clang++ -I\"/Users/charlie/workspace_ccstheia/i2c_ex1_loopback\" -I\"/Users/charlie/ti/C2000Ware_5_04_00_00\" -I\"/Applications/ti/ccs2002/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/include\" -DDEBUG -DRAM -Dgeneric_ram_lnk -I\"/Users/charlie/workspace_ccstheia/i2c_ex1_loopback/CPU1_RAM/syscfg\" -DF28003x=1 -I\"/Users/charlie/ti/C2000Ware_5_04_00_00/device_support/f28003x/common/include/\" -I\"/Users/charlie/ti/C2000Ware_5_04_00_00/driverlib/f28003x/driverlib/\" -DCPU1 -DCMDTOOL",
+      "file"      : "/Users/charlie/workspace_ccstheia/i2c_ex1_loopback/CPU1_RAM/syscfg/device.c"
+   },
+   {
+      "directory" : "/Users/charlie/workspace_ccstheia/i2c_ex1_loopback/CPU1_RAM",
+      "command"   : "clang++ -I\"/Users/charlie/workspace_ccstheia/i2c_ex1_loopback\" -I\"/Users/charlie/ti/C2000Ware_5_04_00_00\" -I\"/Applications/ti/ccs2002/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/include\" -DDEBUG -DRAM -Dgeneric_ram_lnk -I\"/Users/charlie/workspace_ccstheia/i2c_ex1_loopback/CPU1_RAM/syscfg\" -DF28003x=1 -I\"/Users/charlie/ti/C2000Ware_5_04_00_00/device_support/f28003x/common/include/\" -I\"/Users/charlie/ti/C2000Ware_5_04_00_00/driverlib/f28003x/driverlib/\" -DCPU1 -DCMDTOOL",
+      "file"      : "/Users/charlie/workspace_ccstheia/i2c_ex1_loopback/CPU1_RAM/syscfg/device_cmd.c"
+   }
+]

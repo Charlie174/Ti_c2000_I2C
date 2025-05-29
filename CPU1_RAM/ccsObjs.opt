@@ -1,0 +1,10 @@
+"./i2c_ex1_loopback.obj"
+"./syscfg/board.obj"
+"./syscfg/device.obj"
+"./syscfg/device_cmd.obj"
+"./syscfg/c2000ware_libraries.obj"
+"./f28003x_codestartbranch.obj"
+-l"syscfg/device_cmd.cmd"
+-lc2000ware_libraries.cmd.genlibs
+-lboard.cmd.genlibs
+-llibc.a
