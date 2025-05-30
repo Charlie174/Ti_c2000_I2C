@@ -1,0 +1,107 @@
+/**
+ * These arguments were used when this file was generated. They will be automatically applied on subsequent loads
+ * via the GUI or CLI. Run CLI with '--help' for additional information on how to override these arguments.
+ * @cliArgs --board "/boards/LAUNCHXL_F280039C" --device "F28003x" --part "F28003x_100PZ" --package "100PZ" --context "system" --product "C2000WARE@5.04.00.00"
+ * @v2CliArgs --board "/boards/LAUNCHXL_F280039C" --device "TMS320F280037C" --package "100PZ" --context "system" --product "C2000WARE@5.04.00.00"
+ * @versions {"tool":"1.23.0+4000"}
+ */
+
+/**
+ * Import the modules used in this configuration.
+ */
+const device_support   = scripting.addModule("/driverlib/device_support.js");
+const gpio             = scripting.addModule("/driverlib/gpio.js", {}, false);
+const gpio1            = gpio.addInstance();
+const gpio2            = gpio.addInstance();
+const i2c              = scripting.addModule("/driverlib/i2c.js", {}, false);
+const i2c1             = i2c.addInstance();
+const inputxbar_input  = scripting.addModule("/driverlib/inputxbar_input.js", {}, false);
+const inputxbar_input1 = inputxbar_input.addInstance();
+const sysctl           = scripting.addModule("/driverlib/sysctl.js");
+const CMD              = scripting.addModule("/utilities/cmd_tool/cmd_syscfg/source/CMD");
+const CMD1             = CMD.addInstance();
+const CMD2             = CMD.addInstance();
+
+/**
+ * Write custom configuration values to the imported modules.
+ */
+gpio1.$name                     = "sw";
+gpio1.useInterrupt              = true;
+gpio1.writeInitialValue         = true;
+gpio1.gpioPin.$assign           = "boosterpack1.11";
+gpio1.xint.enableInt            = true;
+gpio1.xint.registerInterrupts   = true;
+gpio1.xint.xInt.enableInterrupt = true;
+
+gpio2.$name             = "led";
+gpio2.$hardware         = system.deviceData.board.components.LED4;
+gpio2.direction         = "GPIO_DIR_MODE_OUT";
+gpio2.writeInitialValue = true;
+gpio2.initialValue      = 1;
+
+i2c1.$name                 = "myI2C0";
+i2c1.duty                  = "I2C_DUTYCYCLE_50";
+i2c1.bitCount              = "I2C_BITCOUNT_8";
+i2c1.registerInterrupts    = true;
+i2c1.$hardware             = system.deviceData.board.components.BP_SITE_1.subComponents.I2C;
+i2c1.enabledFIFOInterrupts = ["I2C_INT_RXFF","I2C_INT_TXFF"];
+i2c1.targetAddress         = 0x8;
+i2c1.rxFifo                = "I2C_FIFO_RX1";
+i2c1.ownAddress            = 0x3C;
+i2c1.enabledInterrupts     = ["I2C_INT_STOP_CONDITION"];
+i2c1.useInterrupts         = false;
+i2c1.dataCount             = 10;
+
+inputxbar_input1.$name         = "myINPUTXBARINPUT0";
+gpio1.xint.inputxbar           = inputxbar_input1;
+inputxbar_input1.inputxbarGpio = "GPIO23";
+
+CMD.activeCMD = "generic_ram_lnk";
+
+CMD1.$name                    = "generic_ram_lnk";
+CMD1.sectionMemory_text       = ["RAMGS0","RAMLS4","RAMLS5","RAMLS6","RAMLS7"];
+CMD1.sectionMemory_ramfunc    = ["RAMM0"];
+CMD1.sectionMemory_cinit      = ["RAMM0"];
+CMD1.sectionMemory_stack      = ["RAMM1"];
+CMD1.sectionMemory_init_array = ["RAMM0"];
+CMD1.sectionMemory_bss        = ["RAMLS4"];
+CMD1.sectionMemory_const      = ["RAMLS4"];
+CMD1.sectionMemory_data       = ["RAMLS4"];
+CMD1.sectionMemory_switch     = ["RAMM0"];
+CMD1.sectionMemory_sysmem     = ["RAMLS4"];
+CMD1.sectionRun_ramfunc       = ["RAMLS4"];
+
+CMD2.$name                               = "generic_flash_lnk";
+CMD2.sectionAlignEnable_ramfunc          = true;
+CMD2.sectionAlignEnable_text             = true;
+CMD2.sectionAlignEnable_binit            = true;
+CMD2.sectionAlignEnable_cinit            = true;
+CMD2.sectionAlignEnable_switch           = true;
+CMD2.sectionAlignEnable_init_array       = true;
+CMD2.sectionAlignEnable_const            = true;
+CMD2.sectionAlignEnable_ovly             = true;
+CMD2.sectionMemory_codestart             = "0x080000";
+CMD2.sectionMemory_stack                 = ["RAMM1"];
+CMD2.sectionMemory_ramfunc               = ["FLASH_BANK0_SEC1"];
+CMD2.sectionMemory_text                  = ["FLASH_BANK0_SEC2","FLASH_BANK0_SEC3","FLASH_BANK0_SEC4"];
+CMD2.sectionMemory_binit                 = ["FLASH_BANK0_SEC1"];
+CMD2.sectionMemory_cinit                 = ["FLASH_BANK0_SEC1"];
+CMD2.sectionMemory_switch                = ["FLASH_BANK0_SEC1"];
+CMD2.sectionMemory_bss                   = ["RAMLS5"];
+CMD2.sectionMemory_data                  = ["RAMLS5"];
+CMD2.sectionMemory_sysmem                = ["RAMLS5"];
+CMD2.sectionRunFromDifferentAddr_ramfunc = true;
+CMD2.sectionBinit_ramfunc                = false;
+CMD2.sectionMemory_init_array            = ["FLASH_BANK0_SEC1"];
+CMD2.sectionMemory_const                 = ["FLASH_BANK0_SEC4"];
+CMD2.sectionMemory_ovly                  = ["FLASH_BANK0_SEC1"];
+
+/**
+ * Pinmux solution for unlocked pins/peripherals. This ensures that minor changes to the automatic solver in a future
+ * version of the tool will not impact the pinmux you originally saw.  These lines can be completely deleted in order to
+ * re-solve from scratch.
+ */
+gpio2.gpioPin.$suggestSolution       = "boosterpack2.53";
+i2c1.i2c.$suggestSolution            = "I2CB";
+i2c1.i2c.i2c_sdaPin.$suggestSolution = "boosterpack1.10";
+i2c1.i2c.i2c_sclPin.$suggestSolution = "boosterpack1.9";

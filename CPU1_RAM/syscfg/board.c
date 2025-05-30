@@ -49,7 +49,10 @@ void Board_init()
 
 	PinMux_init();
 	SYSCTL_init();
+	INPUTXBAR_init();
+	GPIO_init();
 	I2C_init();
+	XINT_init();
 	INTERRUPT_init();
 
 	EDIS;
@@ -66,6 +69,16 @@ void PinMux_init()
 	// PinMux for modules assigned to CPU1
 	//
 	
+	// GPIO23 -> sw Pinmux
+	GPIO_setPinConfig(GPIO_23_GPIO23);
+	// B5, GPIO20 -> led Pinmux
+	GPIO_setPinConfig(GPIO_20_GPIO20);
+	// AGPIO -> GPIO mode selected
+	// On 100PZ package for F28003x, if "B5, GPIO20" is used in 
+	// GPIO mode, then "B5" can be used for ADC
+	// On 100PZ package for F28003x, if "B11, GPIO21" is used in 
+	// GPIO mode, then "B11" can be used for ADC
+	GPIO_setAnalogMode(20, GPIO_ANALOG_DISABLED);
 	//
 	// I2CB -> myI2C0 Pinmux
 	//
@@ -82,6 +95,31 @@ void PinMux_init()
 
 //*****************************************************************************
 //
+// GPIO Configurations
+//
+//*****************************************************************************
+void GPIO_init(){
+	sw_init();
+	led_init();
+}
+
+void sw_init(){
+	GPIO_writePin(sw, 0);
+	GPIO_setPadConfig(sw, GPIO_PIN_TYPE_STD);
+	GPIO_setQualificationMode(sw, GPIO_QUAL_SYNC);
+	GPIO_setDirectionMode(sw, GPIO_DIR_MODE_IN);
+	GPIO_setControllerCore(sw, GPIO_CORE_CPU1);
+}
+void led_init(){
+	GPIO_writePin(led, 1);
+	GPIO_setPadConfig(led, GPIO_PIN_TYPE_STD);
+	GPIO_setQualificationMode(led, GPIO_QUAL_SYNC);
+	GPIO_setDirectionMode(led, GPIO_DIR_MODE_OUT);
+	GPIO_setControllerCore(led, GPIO_CORE_CPU1);
+}
+
+//*****************************************************************************
+//
 // I2C Configurations
 //
 //*****************************************************************************
@@ -93,19 +131,28 @@ void myI2C0_init(){
 	I2C_disableModule(myI2C0_BASE);
 	I2C_initController(myI2C0_BASE, DEVICE_SYSCLK_FREQ, myI2C0_BITRATE, I2C_DUTYCYCLE_50);
 	I2C_setConfig(myI2C0_BASE, I2C_CONTROLLER_SEND_MODE);
-	I2C_enableLoopback(myI2C0_BASE);
-	I2C_setOwnAddress(myI2C0_BASE, myI2C0_OWN_ADDRESS);
+	I2C_disableLoopback(myI2C0_BASE);
 	I2C_setOwnAddress(myI2C0_BASE, myI2C0_OWN_ADDRESS);
 	I2C_setTargetAddress(myI2C0_BASE, myI2C0_TARGET_ADDRESS);
 	I2C_setBitCount(myI2C0_BASE, I2C_BITCOUNT_8);
-	I2C_setDataCount(myI2C0_BASE, 2);
+	I2C_setDataCount(myI2C0_BASE, 10);
 	I2C_setAddressMode(myI2C0_BASE, I2C_ADDR_MODE_7BITS);
 	I2C_enableFIFO(myI2C0_BASE);
-	I2C_clearInterruptStatus(myI2C0_BASE, I2C_INT_RXFF | I2C_INT_TXFF);
-	I2C_setFIFOInterruptLevel(myI2C0_BASE, I2C_FIFO_TX2, I2C_FIFO_RX2);
-	I2C_enableInterrupt(myI2C0_BASE, I2C_INT_RXFF | I2C_INT_TXFF);
-	I2C_setEmulationMode(myI2C0_BASE, I2C_EMULATION_FREE_RUN);
+	I2C_setEmulationMode(myI2C0_BASE, I2C_EMULATION_STOP_SCL_LOW);
 	I2C_enableModule(myI2C0_BASE);
+}
+
+//*****************************************************************************
+//
+// INPUTXBAR Configurations
+//
+//*****************************************************************************
+void INPUTXBAR_init(){
+	myINPUTXBARINPUT0_init();
+}
+
+void myINPUTXBARINPUT0_init(){
+	XBAR_setInputPin(INPUTXBAR_BASE, myINPUTXBARINPUT0_INPUT, myINPUTXBARINPUT0_SOURCE);
 }
 
 //*****************************************************************************
@@ -115,15 +162,10 @@ void myI2C0_init(){
 //*****************************************************************************
 void INTERRUPT_init(){
 	
-	// Interrupt Settings for INT_myI2C0
+	// Interrupt Settings for INT_sw_XINT
 	// ISR need to be defined for the registered interrupts
-	Interrupt_register(INT_myI2C0, &INT_myI2C0_ISR);
-	Interrupt_enable(INT_myI2C0);
-	
-	// Interrupt Settings for INT_myI2C0_FIFO
-	// ISR need to be defined for the registered interrupts
-	Interrupt_register(INT_myI2C0_FIFO, &i2cFIFOISR);
-	Interrupt_enable(INT_myI2C0_FIFO);
+	Interrupt_register(INT_sw_XINT, &INT_sw_XINT_ISR);
+	Interrupt_enable(INT_sw_XINT);
 }
 //*****************************************************************************
 //
@@ -518,5 +560,20 @@ void SYSCTL_init(){
 
 
 
+}
+
+//*****************************************************************************
+//
+// XINT Configurations
+//
+//*****************************************************************************
+void XINT_init(){
+	sw_XINT_init();
+}
+
+void sw_XINT_init(){
+	GPIO_setInterruptType(sw_XINT, GPIO_INT_TYPE_FALLING_EDGE);
+	GPIO_setInterruptPin(sw, sw_XINT);
+	GPIO_enableInterrupt(sw_XINT);
 }
 

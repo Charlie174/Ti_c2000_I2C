@@ -1,12 +1,8 @@
 {
     "interruptInfo" : [
         {
-            "interruptName": "INT_myI2C0",
-            "interruptHandler": "INT_myI2C0_ISR"
-        },
-        {
-            "interruptName": "INT_myI2C0_FIFO",
-            "interruptHandler": "i2cFIFOISR"
+            "interruptName": "INT_sw_XINT",
+            "interruptHandler": "INT_sw_XINT_ISR"
         }
     ]
 }

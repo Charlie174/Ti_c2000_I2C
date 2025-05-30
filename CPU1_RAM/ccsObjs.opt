@@ -1,4 +1,4 @@
-"./i2c_ex1_loopback.obj"
+"./MY_I2C.obj"
 "./syscfg/board.obj"
 "./syscfg/device.obj"
 "./syscfg/device_cmd.obj"

@@ -57,6 +57,14 @@ extern "C"
 // PinMux Configurations
 //
 //*****************************************************************************
+//
+// GPIO23 - GPIO Settings
+//
+#define sw_GPIO_PIN_CONFIG GPIO_23_GPIO23
+//
+// GPIO20 - GPIO Settings
+//
+#define led_GPIO_PIN_CONFIG GPIO_20_GPIO20
 
 //
 // I2CB -> myI2C0 Pinmux
@@ -76,15 +84,34 @@ extern "C"
 
 //*****************************************************************************
 //
+// GPIO Configurations
+//
+//*****************************************************************************
+#define sw 23
+void sw_init();
+#define led 20
+void led_init();
+
+//*****************************************************************************
+//
 // I2C Configurations
 //
 //*****************************************************************************
 #define myI2C0_BASE I2CB_BASE
 #define myI2C0_BITRATE 400000
-#define myI2C0_TARGET_ADDRESS 60
+#define myI2C0_TARGET_ADDRESS 8
 #define myI2C0_OWN_ADDRESS 60
 #define myI2C0_MODULE_CLOCK_FREQUENCY 10000000
 void myI2C0_init();
+
+//*****************************************************************************
+//
+// INPUTXBAR Configurations
+//
+//*****************************************************************************
+#define myINPUTXBARINPUT0_SOURCE 23
+#define myINPUTXBARINPUT0_INPUT XBAR_INPUT4
+void myINPUTXBARINPUT0_init();
 
 //*****************************************************************************
 //
@@ -92,17 +119,11 @@ void myI2C0_init();
 //
 //*****************************************************************************
 
-// Interrupt Settings for INT_myI2C0
+// Interrupt Settings for INT_sw_XINT
 // ISR need to be defined for the registered interrupts
-#define INT_myI2C0 INT_I2CB
-#define INT_myI2C0_INTERRUPT_ACK_GROUP INTERRUPT_ACK_GROUP8
-extern __interrupt void INT_myI2C0_ISR(void);
-
-// Interrupt Settings for INT_myI2C0_FIFO
-// ISR need to be defined for the registered interrupts
-#define INT_myI2C0_FIFO INT_I2CB_FIFO
-#define INT_myI2C0_FIFO_INTERRUPT_ACK_GROUP INTERRUPT_ACK_GROUP8
-extern __interrupt void i2cFIFOISR(void);
+#define INT_sw_XINT INT_XINT1
+#define INT_sw_XINT_INTERRUPT_ACK_GROUP INTERRUPT_ACK_GROUP1
+extern __interrupt void INT_sw_XINT_ISR(void);
 
 //*****************************************************************************
 //
@@ -112,13 +133,25 @@ extern __interrupt void i2cFIFOISR(void);
 
 //*****************************************************************************
 //
+// XINT Configurations
+//
+//*****************************************************************************
+#define sw_XINT GPIO_INT_XINT1
+#define sw_XINT_TYPE GPIO_INT_TYPE_FALLING_EDGE
+void sw_XINT_init();
+
+//*****************************************************************************
+//
 // Board Configurations
 //
 //*****************************************************************************
 void	Board_init();
+void	GPIO_init();
 void	I2C_init();
+void	INPUTXBAR_init();
 void	INTERRUPT_init();
 void	SYSCTL_init();
+void	XINT_init();
 void	PinMux_init();
 
 //*****************************************************************************

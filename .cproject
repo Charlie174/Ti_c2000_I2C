@@ -112,6 +112,9 @@
                             </tool>
                         </toolChain>
                     </folderInfo>
+                    <sourceEntries>
+                        <entry excluding="MY_I2C copy.c|i2c_ex1_loopback.syscfg|i2c_ex1_loopback.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+                    </sourceEntries>
                 </configuration>
             </storageModule>
             <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
