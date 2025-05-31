@@ -137,8 +137,8 @@ void myI2C0_init(){
 	I2C_setBitCount(myI2C0_BASE, I2C_BITCOUNT_8);
 	I2C_setDataCount(myI2C0_BASE, 10);
 	I2C_setAddressMode(myI2C0_BASE, I2C_ADDR_MODE_7BITS);
-	I2C_enableFIFO(myI2C0_BASE);
-	I2C_setEmulationMode(myI2C0_BASE, I2C_EMULATION_STOP_SCL_LOW);
+	I2C_disableFIFO(myI2C0_BASE);
+	I2C_setEmulationMode(myI2C0_BASE, I2C_EMULATION_FREE_RUN);
 	I2C_enableModule(myI2C0_BASE);
 }
 

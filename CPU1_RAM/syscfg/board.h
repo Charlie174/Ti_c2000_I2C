@@ -98,7 +98,7 @@ void led_init();
 //
 //*****************************************************************************
 #define myI2C0_BASE I2CB_BASE
-#define myI2C0_BITRATE 400000
+#define myI2C0_BITRATE 100000
 #define myI2C0_TARGET_ADDRESS 8
 #define myI2C0_OWN_ADDRESS 60
 #define myI2C0_MODULE_CLOCK_FREQUENCY 10000000
