@@ -170,22 +170,3 @@ __interrupt void INT_sw_XINT_ISR(void)
 //     //     //    sData[i] = (sData[i] + 1) & 0xFF;
 //     //     // }
 
-//     //     // I2C_clearInterruptStatus(myI2C0_BASE, I2C_INT_TXFF);
-//     // }
-
-//     Interrupt_clearACKGroup(INT_myI2C0_FIFO_INTERRUPT_ACK_GROUP);
-// }
-
-//  //
-//  // Enabled only for SysConfig functionality
-//  //
-// __interrupt void INT_myI2C0_ISR(void){
-//     //
-//     // Issue ACK
-//     //
-//     Interrupt_clearACKGroup(INT_myI2C0_INTERRUPT_ACK_GROUP);
-// }
-
-//
-// End of File
-//

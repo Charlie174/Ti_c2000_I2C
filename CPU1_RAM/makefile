@@ -8,7 +8,7 @@ GEN_OPTS__FLAG := --cmd_file="syscfg/board.opt" --cmd_file="syscfg/device_cmd.op
 GEN_CMDS__FLAG := -l"syscfg/device_cmd.cmd" 
 
 ORDERED_OBJS += \
-"./MY_I2C.obj" \
+"./MY_I2C_Sensor.obj" \
 "./syscfg/board.obj" \
 "./syscfg/device.obj" \
 "./syscfg/device_cmd.obj" \
@@ -146,8 +146,8 @@ i2c_ex1_loopback.out: $(OBJS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(GEN_MISC_FILES__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "MY_I2C.obj" "syscfg/board.obj" "syscfg/device.obj" "syscfg/device_cmd.obj" "syscfg/c2000ware_libraries.obj" "f28003x_codestartbranch.obj" 
-	-$(RM) "MY_I2C.d" "syscfg/board.d" "syscfg/device.d" "syscfg/device_cmd.d" "syscfg/c2000ware_libraries.d" 
+	-$(RM) "MY_I2C_Sensor.obj" "syscfg/board.obj" "syscfg/device.obj" "syscfg/device_cmd.obj" "syscfg/c2000ware_libraries.obj" "f28003x_codestartbranch.obj" 
+	-$(RM) "MY_I2C_Sensor.d" "syscfg/board.d" "syscfg/device.d" "syscfg/device_cmd.d" "syscfg/c2000ware_libraries.d" 
 	-$(RM) "f28003x_codestartbranch.d" 
 	-$(RMDIR) $(GEN_MISC_DIRS__QUOTED)
 	-@echo 'Finished clean'

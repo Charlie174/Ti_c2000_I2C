@@ -1,4 +1,4 @@
-"./MY_I2C.obj"
+"./MY_I2C_Sensor.obj"
 "./syscfg/board.obj"
 "./syscfg/device.obj"
 "./syscfg/device_cmd.obj"

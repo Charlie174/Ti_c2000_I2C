@@ -10,32 +10,32 @@
 	@echo 'Finished building: "$<"'
 	@echo ' '
 
-build-138626623: ../MY_I2C.syscfg
+build-1695479023: ../MY_I2C_Sensor.syscfg
 	@echo 'Building file: "$<"'
 	@echo 'Invoking: SysConfig'
-	"/Applications/ti/ccs2002/ccs/utils/sysconfig_1.23.0/sysconfig_cli.sh" --script "/Users/charlie/workspace_ccstheia/i2c_ex1_loopback/MY_I2C.syscfg" -o "syscfg" -s "/Users/charlie/ti/C2000Ware_5_04_00_00/.metadata/sdk.json" -b "/boards/LAUNCHXL_F280039C" --context "system" --compiler ccs
+	"/Applications/ti/ccs2002/ccs/utils/sysconfig_1.23.0/sysconfig_cli.sh" --script "/Users/charlie/workspace_ccstheia/i2c_ex1_loopback/MY_I2C_Sensor.syscfg" -o "syscfg" -s "/Users/charlie/ti/C2000Ware_5_04_00_00/.metadata/sdk.json" -b "/boards/LAUNCHXL_F280039C" --context "system" --compiler ccs
 	@echo 'Finished building: "$<"'
 	@echo ' '
 
-syscfg/board.c: build-138626623 ../MY_I2C.syscfg
-syscfg/board.h: build-138626623
-syscfg/board.cmd.genlibs: build-138626623
-syscfg/board.opt: build-138626623
-syscfg/board.json: build-138626623
-syscfg/pinmux.csv: build-138626623
-syscfg/device.c: build-138626623
-syscfg/device.h: build-138626623
-syscfg/device_cmd.cmd: build-138626623
-syscfg/device_cmd.c: build-138626623
-syscfg/device_cmd.h: build-138626623
-syscfg/device_cmd.opt: build-138626623
-syscfg/device_cmd.cmd.genlibs: build-138626623
-syscfg/c2000ware_libraries.cmd.genlibs: build-138626623
-syscfg/c2000ware_libraries.opt: build-138626623
-syscfg/c2000ware_libraries.c: build-138626623
-syscfg/c2000ware_libraries.h: build-138626623
-syscfg/clocktree.h: build-138626623
-syscfg: build-138626623
+syscfg/board.c: build-1695479023 ../MY_I2C_Sensor.syscfg
+syscfg/board.h: build-1695479023
+syscfg/board.cmd.genlibs: build-1695479023
+syscfg/board.opt: build-1695479023
+syscfg/board.json: build-1695479023
+syscfg/pinmux.csv: build-1695479023
+syscfg/device.c: build-1695479023
+syscfg/device.h: build-1695479023
+syscfg/device_cmd.cmd: build-1695479023
+syscfg/device_cmd.c: build-1695479023
+syscfg/device_cmd.h: build-1695479023
+syscfg/device_cmd.opt: build-1695479023
+syscfg/device_cmd.cmd.genlibs: build-1695479023
+syscfg/c2000ware_libraries.cmd.genlibs: build-1695479023
+syscfg/c2000ware_libraries.opt: build-1695479023
+syscfg/c2000ware_libraries.c: build-1695479023
+syscfg/c2000ware_libraries.h: build-1695479023
+syscfg/clocktree.h: build-1695479023
+syscfg: build-1695479023
 
 syscfg/%.obj: ./syscfg/%.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
 	@echo 'Building file: "$<"'

@@ -4,13 +4,13 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 SYSCFG_SRCS += \
-../MY_I2C.syscfg 
+../MY_I2C_Sensor.syscfg 
 
 ASM_SRCS += \
 /Users/charlie/ti/C2000Ware_5_04_00_00/device_support/f28003x/common/source/f28003x_codestartbranch.asm 
 
 C_SRCS += \
-../MY_I2C.c \
+../MY_I2C_Sensor.c \
 ./syscfg/board.c \
 ./syscfg/device.c \
 ./syscfg/device_cmd.c \
@@ -33,7 +33,7 @@ GEN_MISC_DIRS += \
 ./syscfg 
 
 C_DEPS += \
-./MY_I2C.d \
+./MY_I2C_Sensor.d \
 ./syscfg/board.d \
 ./syscfg/device.d \
 ./syscfg/device_cmd.d \
@@ -45,7 +45,7 @@ GEN_OPTS += \
 ./syscfg/c2000ware_libraries.opt 
 
 OBJS += \
-./MY_I2C.obj \
+./MY_I2C_Sensor.obj \
 ./syscfg/board.obj \
 ./syscfg/device.obj \
 ./syscfg/device_cmd.obj \
@@ -71,7 +71,7 @@ GEN_MISC_DIRS__QUOTED += \
 "syscfg" 
 
 OBJS__QUOTED += \
-"MY_I2C.obj" \
+"MY_I2C_Sensor.obj" \
 "syscfg/board.obj" \
 "syscfg/device.obj" \
 "syscfg/device_cmd.obj" \
@@ -91,7 +91,7 @@ GEN_MISC_FILES__QUOTED += \
 "syscfg/clocktree.h" 
 
 C_DEPS__QUOTED += \
-"MY_I2C.d" \
+"MY_I2C_Sensor.d" \
 "syscfg/board.d" \
 "syscfg/device.d" \
 "syscfg/device_cmd.d" \
@@ -111,14 +111,14 @@ ASM_DEPS__QUOTED += \
 "f28003x_codestartbranch.d" 
 
 C_SRCS__QUOTED += \
-"../MY_I2C.c" \
+"../MY_I2C_Sensor.c" \
 "./syscfg/board.c" \
 "./syscfg/device.c" \
 "./syscfg/device_cmd.c" \
 "./syscfg/c2000ware_libraries.c" 
 
 SYSCFG_SRCS__QUOTED += \
-"../MY_I2C.syscfg" 
+"../MY_I2C_Sensor.syscfg" 
 
 ASM_SRCS__QUOTED += \
 "/Users/charlie/ti/C2000Ware_5_04_00_00/device_support/f28003x/common/source/f28003x_codestartbranch.asm" 

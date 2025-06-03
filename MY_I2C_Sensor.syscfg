@@ -45,6 +45,7 @@ i2c1.bitCount              = "I2C_BITCOUNT_8";
 i2c1.registerInterrupts    = true;
 i2c1.$hardware             = system.deviceData.board.components.BP_SITE_1.subComponents.I2C;
 i2c1.enabledFIFOInterrupts = ["I2C_INT_RXFF","I2C_INT_TXFF"];
+i2c1.targetAddress         = 0x68;
 i2c1.rxFifo                = "I2C_FIFO_RX1";
 i2c1.ownAddress            = 0x3C;
 i2c1.dataCount             = 10;
@@ -52,7 +53,6 @@ i2c1.emulationMode         = "I2C_EMULATION_FREE_RUN";
 i2c1.useFifo               = false;
 i2c1.bitRate               = 100000;
 i2c1.useInterrupts         = false;
-i2c1.targetAddress         = 0x68;
 
 inputxbar_input1.$name         = "myINPUTXBARINPUT0";
 gpio1.xint.inputxbar           = inputxbar_input1;
